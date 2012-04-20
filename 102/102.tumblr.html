@@ -1,0 +1,194 @@
+<!--
+
+overheard in
+
+ d888   .d8888b.   .d8888b.                         888
+d8888  d88P  Y88b d88P  Y88b                        888
+  888  888    888        888                        888
+  888  888    888      .d88P 888  888  888 888  888 88888b.
+  888  888    888  .od888P"  888  888  888 888  888 888 "88b
+  888  888    888 d88P"      888  888  888 Y88  88P 888  888
+  888  Y88b  d88P 888"       Y88b 888 d88P  Y8bd8P  888  888
+8888888 "Y8888P"  888888888   "Y8888888P"    Y88P   888  888
+
+http://102.westvillageh.com
+
+Tumblr created by Lauren
+Themed by Ali
+
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{Title}{block:PostSummary} : {PostSummary}{/block:PostSummary}</title>
+    <meta name="description" content="{MetaDescription}"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="{RSS}" />
+    <link rel="icon" href="{Favicon}" />
+
+    <link rel="stylesheet" type="text/css"
+      href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+    <style>
+      #container > header,
+      #container > nav,
+      #container > footer { text-align: center; }
+
+      body {
+        background-color: #EEE;
+        padding: 1em;
+      }
+
+      #container {
+        width: 600px;
+        padding: 2em;
+        margin: 2em auto;
+        background-color: #FFF;
+        border: solid thick #888;
+      }
+
+      #posts {
+        margin-bottom: 1em;
+      }
+
+      .post {
+        margin-bottom: 1em;
+      }
+      {CustomCSS}
+    </style>
+  </head>
+
+  <body>
+  <div id="container">
+    <header>
+      <h1>Overheard in 102WVH</h1>
+      <p id="desc">{Description}</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/archive">{lang:Archive}</a></li>
+        <li><a href="/submit">{SubmitLabel}</a></li>
+        <li><a href="{RSS}">{lang:RSS}</a></li>
+      </ul>
+    </nav>
+
+    <div id="posts">
+      {block:Posts}
+      {block:NewDayDate}
+      <span class="date">
+        {ShortMonth} {DayOfMonth}{DayOfMonthSuffix}, {Year}
+      </span>
+
+      {/block:NewDayDate}
+
+      <div class="post {PostType}-post">
+
+        <div class="permalink"><a href="{Permalink}">perma</a></div>
+
+        {block:Text}
+          {block:Title}<header><h1>{Title}</h1></header>{/block:Title}
+          {Body}
+        {/block:Text}
+
+        {block:Photo}
+          {LinkOpenTag}
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+          {LinkCloseTag}
+          {block:Caption}
+            {Caption}
+          {/block:Caption}
+        {/block:Photo}
+
+        {block:Photoset}
+        {/block:Photoset}
+
+        {block:Quote}
+          <div class="quote-{Length}">
+            {Quote}
+          </div>
+          {block:Source}<div class="quote-source">{Source}</div>{/block:Source}
+        {/block:Quote}
+
+        {block:Link}
+          <header>
+            <h1><a class="link" href="{URL}">{Name}</a></h1>
+          </header>
+          {block:Description}
+          {Description}
+          {/block:Description}
+        {/block:Link}
+
+        {block:Chat}
+          {block:Title}
+          <header>
+            <h1><a href="{Permalink}">{Title}</a></h1>
+          </header>
+          {/block:Title}
+
+          <ul class="lines">
+            {block:Lines}
+            <li class="{Alt} user_{UserNumber}">
+              {block:Label}<span class="label">{Label}</span>{/block:Label}
+
+              {Line}
+            </li>
+          {/block:Lines}
+          </ul>
+        {/block:Chat}
+
+        {block:Video}
+          {Video-500}
+
+          {block:Caption}
+          <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Video}
+
+        {block:Audio}
+          {AudioPlayerBlack}
+
+          {block:Caption}
+          <div class="caption">{Caption}</div>
+          {/block:Caption}
+        {/block:Audio}
+
+        <footer>
+          {block:HasTags}
+            <ul class="tags"><span>Tagged: </span>
+            {block:Tags}
+              <li><a href="{TagURL}">{Tag}</a></li>
+            {/block:Tags}
+            </ul>
+          {/block:HasTags}
+        </footer>
+      </div>
+      {/block:Posts}
+    </div>
+
+    <nav id="paging">
+      {block:PreviousPage}
+        <a href="{PreviousPage}">&#171; Previous</a>
+      {/block:PreviousPage}
+
+      {block:NextPage}
+        <a href="{NextPage}">Next &#187;</a>
+      {/block:NextPage}
+
+      <a href="/archive">Archive</a>
+    </nav>
+
+
+    <footer>
+      Not endorsed by Northeastern University or CCIS.<br>
+      sudo hi chris
+    </footer>
+
+  </div>
+  </body>
+
+</html>
