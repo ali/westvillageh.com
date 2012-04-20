@@ -3,10 +3,52 @@ body {
   padding: 1em;
 }
 
+
+.container {
+  border: solid thick #EEE;
+  background-color: white;
+  padding: 0em 2em 1em 2em;
+  width: 550px;
+}
+
+h2.date {
+  margin-bottom: 1em;
+}
+
 #posts {
   margin-bottom: 1em;
 }
 
 .post {
-  margin-bottom: 1em;
+  margin-bottom: 5em;
 }
+
+.permalink {
+  float: right;
+  color: white;
+}
+
+#main-nav ul {
+  text-align: center;
+}
+
+ul.tags {
+  display: inline;
+  margin: 0;
+}
+
+ul.tags li {
+  display: inline;
+}
+
+  ul.tags li:after {
+    content: ", ";
+  }
+
+  ul.tags li:last-child:after {
+    content: "";
+  }
+
+img.photo { width: 100%; }
+
+.container > header, .container > footer { text-align: center }
