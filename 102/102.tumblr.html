@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
 
 overheard in
@@ -18,7 +19,6 @@ Themed by Ali
 
 -->
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -32,73 +32,57 @@ Themed by Ali
     <link rel="icon" href="{Favicon}" />
 
     <link rel="stylesheet" type="text/css"
-      href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+      href="http://westvillageh.com/102/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+      href="http://westvillageh.com/102/css/custom.css" />
     <style>
-      #container > header,
-      #container > nav,
-      #container > footer { text-align: center; }
-
-      body {
-        background-color: #EEE;
-        padding: 1em;
-      }
-
-      #container {
-        width: 600px;
-        padding: 2em;
-        margin: 2em auto;
-        background-color: #FFF;
-        border: solid thick #888;
-      }
-
-      #posts {
-        margin-bottom: 1em;
-      }
-
-      .post {
-        margin-bottom: 1em;
-      }
       {CustomCSS}
     </style>
   </head>
 
   <body>
-  <div id="container">
-    <header>
-      <h1>Overheard in 102WVH</h1>
-      <p id="desc">{Description}</p>
+    <div class="container">
+    <header class="page-header">
+      <h1>
+        <a href="/">Overheard in 102WVH</a><br>
+        <small id="desc">{Description} <a href="/submit">Submit a
+quote.</a></small>
+      </h1>
     </header>
 
-    <nav>
-      <ul>
+    <nav id="main-nav">
+      <ul class="nav nav-pills">
         <li><a href="/archive">{lang:Archive}</a></li>
         <li><a href="/submit">{SubmitLabel}</a></li>
         <li><a href="{RSS}">{lang:RSS}</a></li>
+        <li><a href="/tagged/wvh">#WVH</a></li>
+        <li><a href="/tagged/102">#102</a></li>
+        <li><a href="/tagged/pit">#Pit</a></li>
+        <li><a href="/tagged/irc">#IRC</a></li>
       </ul>
     </nav>
 
     <div id="posts">
       {block:Posts}
       {block:NewDayDate}
-      <span class="date">
+      <hr>
+      <h2 class="date">
         {ShortMonth} {DayOfMonth}{DayOfMonthSuffix}, {Year}
-      </span>
+      </h2>
 
       {/block:NewDayDate}
 
       <div class="post {PostType}-post">
 
-        <div class="permalink"><a href="{Permalink}">perma</a></div>
-
         {block:Text}
-          {block:Title}<header><h1>{Title}</h1></header>{/block:Title}
+          {block:Title}<header><h2>{Title}</h2></header>{/block:Title}
           {Body}
         {/block:Text}
 
         {block:Photo}
-          {LinkOpenTag}
-            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-          {LinkCloseTag}
+          <a href="{LinkURL}">
+            <img class="photo" src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+          </a>
           {block:Caption}
             {Caption}
           {/block:Caption}
@@ -108,15 +92,15 @@ Themed by Ali
         {/block:Photoset}
 
         {block:Quote}
-          <div class="quote-{Length}">
+          <blockquote class="quote-{Length}">
             {Quote}
-          </div>
-          {block:Source}<div class="quote-source">{Source}</div>{/block:Source}
+            {block:Source}<small class="quote-source">{Source}</small>{/block:Source}
+          </blockquote>
         {/block:Quote}
 
         {block:Link}
           <header>
-            <h1><a class="link" href="{URL}">{Name}</a></h1>
+            <h2><a class="link" href="{URL}">{Name}</a></h2>
           </header>
           {block:Description}
           {Description}
@@ -126,23 +110,23 @@ Themed by Ali
         {block:Chat}
           {block:Title}
           <header>
-            <h1><a href="{Permalink}">{Title}</a></h1>
+            <h2><a href="{Permalink}">{Title}</a></h2>
           </header>
           {/block:Title}
 
-          <ul class="lines">
+          <table class="lines table table-striped table-bordered">
+          <tbody>
             {block:Lines}
-            <li class="{Alt} user_{UserNumber}">
-              {block:Label}<span class="label">{Label}</span>{/block:Label}
-
-              {Line}
-            </li>
+            <tr class="{Alt} user_{UserNumber}">
+              {block:Label}<td>{Label}</td>{/block:Label}
+              <td>{Line}</td>
+            </tr>
           {/block:Lines}
-          </ul>
+          </table>
         {/block:Chat}
 
         {block:Video}
-          {Video-500}
+          <div class="thumbnail">{Video-500}</div>
 
           {block:Caption}
           <div class="caption">{Caption}</div>
@@ -157,7 +141,14 @@ Themed by Ali
           {/block:Caption}
         {/block:Audio}
 
-        <footer>
+        <footer class="meta">
+          <div class="permalink">
+            <a href="{Permalink}" title="permalink">#</a>
+          </div>
+
+          {block:NoteCount}
+          <span class="label label-info">{NoteCountWithLabel}</span>
+          {/block:NoteCount}
           {block:HasTags}
             <ul class="tags"><span>Tagged: </span>
             {block:Tags}
@@ -170,20 +161,27 @@ Themed by Ali
       {/block:Posts}
     </div>
 
+    {block:PostNotes}
+    <hr>
+    {PostNotes}
+    {/block:PostNotes}
+
     <nav id="paging">
-      {block:PreviousPage}
-        <a href="{PreviousPage}">&#171; Previous</a>
-      {/block:PreviousPage}
+      <ul class="pager">
+        {block:PreviousPage}
+          <li class="previous"><a href="{PreviousPage}">&#171; Prev</a></li>
+        {/block:PreviousPage}
 
-      {block:NextPage}
-        <a href="{NextPage}">Next &#187;</a>
-      {/block:NextPage}
+        {block:NextPage}
+          <li class="next"><a href="{NextPage}">Next &#187;</a></li>
+        {/block:NextPage}
 
-      <a href="/archive">Archive</a>
+      </ul>
     </nav>
 
 
     <footer>
+      <hr>
       Not endorsed by Northeastern University or CCIS.<br>
       sudo hi chris
     </footer>
