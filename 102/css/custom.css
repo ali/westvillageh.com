@@ -1,0 +1,12 @@
+body {
+  background-color: #EEE;
+  padding: 1em;
+}
+
+#posts {
+  margin-bottom: 1em;
+}
+
+.post {
+  margin-bottom: 1em;
+}
