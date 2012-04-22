@@ -1,0 +1,23 @@
+body {
+  padding: 2em;
+  background: #000;
+  color: #FA6C60;
+  text-align: center;
+}
+
+p, ul, footer {
+  margin: 2em 0;
+  font: 16px/24px monospace;
+  color: #FFF;
+}
+
+footer { color: #000; }
+
+a, a:visited, a:active, a:hover {
+  color: #ccc;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
