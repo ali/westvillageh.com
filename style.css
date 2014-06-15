@@ -1,23 +1,46 @@
 body {
   padding: 2em;
-  background: #000;
+  background: #161616;
   color: #FA6C60;
   text-align: center;
 }
 
 p, ul, footer {
   margin: 2em 0;
-  font: 16px/24px monospace;
+  font: 1.2em/1.8em monospace;
   color: #FFF;
+  letter-spacing: 1px;
 }
 
-footer { color: #000; }
+footer { color: #333; }
 
-a, a:visited, a:active, a:hover {
+a, a:visited {
   color: #ccc;
+}
+
+a:active, a:hover {
+  color: #d2ec99;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+@media (max-width: 991px) {
+  pre {
+    width: 100%;
+  }
+  p, ul {
+    font: 1.8em monospace;
+  }
+  li {
+    margin-bottom: 1em;
+  }
+  a, a:visited {
+    text-decoration: none;
+  }
+  a:active, a:hover {
+    text-decoration: underline;
+  }
 }
